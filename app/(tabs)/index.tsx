@@ -2,7 +2,7 @@ import { View, StyleSheet } from 'react-native';
 import * as ImagePicker from 'expo-image-picker';
 import { useState } from 'react';
 import { type ImageSource } from 'expo-image';
-
+import { Link, useRouter } from 'expo-router';
 
 import Button from "@/src/components/Button";
 import EmojiList from '@/src/components/EmojiList';
@@ -15,6 +15,7 @@ import EmojiSticker from '@/src/components/EmojiSticker';
 const PlaceholderImage = require("@/assets/images/background-image.png");
 
 export default function Index() {
+  const router = useRouter();
   const [selectedImage, setSelectedImage] = useState<string | undefined>(undefined);
   const [showAppOptions, setShowAppOptions] = useState<boolean>(false);
   const [isModalVisible, setIsModalVisible] = useState<boolean>(false);
@@ -48,6 +49,9 @@ export default function Index() {
   const onSaveImageAsync = async () => {
     // we will implement this later
   };
+  const goToNotFound = () => {
+    router.push({ pathname: '/+not-found', params: { id: '123' } });
+  };
 
   return (
     <View style={styles.container}>
@@ -55,6 +59,7 @@ export default function Index() {
         <ImageViewer imgSource={selectedImage || PlaceholderImage} />
         {pickedEmoji && <EmojiSticker imageSize={40} stickerSource={pickedEmoji} />}
       </View>
+      <Button theme="primary" label="Go to Not Found" onPress={goToNotFound} />
       {showAppOptions ? (
         <View style={styles.optionsContainer}>
         <View style={styles.optionsRow}>

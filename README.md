@@ -93,3 +93,5 @@ This repository will explore practical examples of parameter handling in Expo Ro
 - Type-safe parameter handling
 - State management integration
 
+![alt text](image.png)
+
