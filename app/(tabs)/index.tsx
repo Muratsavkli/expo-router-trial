@@ -53,6 +53,10 @@ export default function Index() {
     router.push({ pathname: '/+not-found', params: { id: '123' } });
   };
 
+  const goToAbout = () => {
+    router.push({ pathname: '/about', params: { id: '1a2b' } });
+  };
+
   return (
     <View style={styles.container}>
       <View style={styles.imageContainer}>
@@ -60,6 +64,7 @@ export default function Index() {
         {pickedEmoji && <EmojiSticker imageSize={40} stickerSource={pickedEmoji} />}
       </View>
       <Button theme="primary" label="Go to Not Found" onPress={goToNotFound} />
+      <Button theme="primary" label="Go to About" onPress={goToAbout} />
       {showAppOptions ? (
         <View style={styles.optionsContainer}>
         <View style={styles.optionsRow}>
